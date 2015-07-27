@@ -14,6 +14,7 @@ public class Welcome extends ActionBarActivity {
         setContentView(R.layout.activity_welcome);
 
         int hello;
+        String bye;
     }
 
     @Override
