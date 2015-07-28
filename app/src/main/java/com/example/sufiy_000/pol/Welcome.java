@@ -1,14 +1,18 @@
 package com.example.sufiy_000.pol;
 
+import android.content.Context;
 import android.os.Handler;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.Toast;
-
+import java.util.Locale;
 
 public class Welcome extends ActionBarActivity {
+
+    private Locale m_locale;
+    private String m_localeString;
 
     private Handler m_Handler = new Handler();
 
@@ -16,6 +20,11 @@ public class Welcome extends ActionBarActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_welcome);
+
+        // Check if user exists
+
+        m_locale = getResources().getConfiguration().locale;
+        m_localeString = m_locale.getDisplayCountry();
 
         m_Handler.postDelayed(new Runnable() {
             @Override

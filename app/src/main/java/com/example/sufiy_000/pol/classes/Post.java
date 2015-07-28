@@ -1,3 +1,4 @@
+package com.example.sufiy_000.pol.classes;
 import java.util.Date;
 
 /**
@@ -65,3 +66,4 @@ public class Post {
         this.m_flaggedAmount = m_flaggedAmount;
     }
 }
+
