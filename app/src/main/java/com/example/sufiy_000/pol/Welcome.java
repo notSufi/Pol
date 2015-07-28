@@ -1,17 +1,33 @@
 package com.example.sufiy_000.pol;
 
+import android.app.Activity;
+import android.app.DownloadManager;
 import android.content.Context;
 import android.content.Intent;
-import android.os.Handler;
-import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
-import android.view.Menu;
-import android.view.MenuItem;
+import android.os.Handler;
+import android.provider.Settings.Secure;
+import android.support.v7.app.ActionBarActivity;
+import android.telecom.TelecomManager;
+import android.telephony.TelephonyManager;
+import android.util.Log;
+import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
-import android.location.Location;
-import android.location.LocationListener;
-import android.location.LocationManager;
+
+import com.example.sufiy_000.pol.classes.User;
+import com.squareup.okhttp.OkHttpClient;
+import com.squareup.okhttp.Request;
+import com.squareup.okhttp.Response;
+
+import java.io.IOException;
+import java.util.Calendar;
+import java.util.Date;
+
+//import android.view.Menu;
+//import android.view.MenuItem;
+//import android.location.LocationListener;
+//import android.location.LocationManager;
 
 public class Welcome extends ActionBarActivity {
 
@@ -21,6 +37,10 @@ public class Welcome extends ActionBarActivity {
 
     private Handler m_Handler = new Handler();
     private boolean CanSwitch = true;
+
+    //private Location m_location = new Location();
+
+    User m_user;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,18 +55,51 @@ public class Welcome extends ActionBarActivity {
         double m_lat = m_deviceLocation.getLatitude();
         double m_long = m_deviceLocation.getLongitude();*/
 
-        LocationManager lm = (LocationManager)getSystemService(Context.LOCATION_SERVICE);
-        Location location = lm.getLastKnownLocation(LocationManager.GPS_PROVIDER);
-        if(location == null){
+        //LocationManager lm = (LocationManager)getSystemService(Context.LOCATION_SERVICE);
+        //Location location = lm.getLastKnownLocation(LocationManager.GPS_PROVIDER);
+
+        //LocationManager mLocationManager = (LocationManager) getSystemService(LOCATION_SERVICE);
+
+        //mLocationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, m_locationListener);
+
+       // m_location.setLatitude(51);
+       // m_location.setLongitude(0
+
+        if(false){
             text = "Location not found";
         }else {
-            m_long = location.getLongitude();
-            m_lat = location.getLatitude();
+            //m_long = m_location.getLongitude();
+            //m_lat = m_location.getLatitude();
+            m_long = 0;
+            m_lat = 51;
             text = String.valueOf(m_lat)+","+String.valueOf(m_long);
             CanSwitch = true;
         }
 
+        try {
+            OkHttpClient client = new OkHttpClient();
+
+            Request request = new Request.Builder().url("http://google.com").build();
+
+            Response response = client.newCall(request).execute();
+
+            text += " " + response.body().string();
+        } catch (Exception e) {
+            Log.e("Welcome", "" + e.toString());
+        }
+
         testView.setText(text);
+
+        TelephonyManager tm = (TelephonyManager) getBaseContext().getSystemService(Context.TELEPHONY_SERVICE);
+        String android_id = tm.getDeviceId();
+
+        Calendar c = Calendar.getInstance();
+        int seconds = c.get(Calendar.SECOND);
+
+        Date d = new Date();
+        d.setTime(seconds);
+
+        m_user = new User(android_id,d,0);
 
         m_Handler.postDelayed(new Runnable() {
             @Override
@@ -58,8 +111,8 @@ public class Welcome extends ActionBarActivity {
 
     private void doStuff () {
         if (CanSwitch) {
-            Intent intent = new Intent(this, Home.class);
-            startActivity(intent);
+            //-Intent intent = new Intent(this, Home.class);
+            //startActivity(intent);
         }
         else {
             Toast.makeText(this, "Switch activity now", Toast.LENGTH_SHORT).show();
