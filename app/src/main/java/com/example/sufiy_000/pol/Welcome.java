@@ -2,6 +2,7 @@ package com.example.sufiy_000.pol;
 
 import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.provider.Settings;
@@ -79,7 +80,7 @@ public class Welcome extends Activity {
         String android_id = Settings.Secure.getString(getApplicationContext().getContentResolver(),
                 Settings.Secure.ANDROID_ID);
 
-        testView.setText(android_id);
+        //testView.setText(android_id);
 
         Calendar c = Calendar.getInstance();
         int seconds = c.get(Calendar.SECOND);
@@ -112,6 +113,11 @@ public class Welcome extends Activity {
         protected void onPostExecute(Response response) {
             super.onPostExecute(response);
             //testView.setText(response.message());
+            Intent intent = new Intent(getApplicationContext(), Home.class);
+
+            //intent.putExtra("User", new User(".", new Date()))
+
+            startActivity(intent);
         }
     }
 }
