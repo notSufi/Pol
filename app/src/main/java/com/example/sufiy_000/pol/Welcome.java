@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.app.DownloadManager;
 import android.content.Context;
 import android.content.Intent;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.Handler;
 import android.provider.Settings.Secure;
@@ -76,17 +77,8 @@ public class Welcome extends ActionBarActivity {
             CanSwitch = true;
         }
 
-        try {
-            OkHttpClient client = new OkHttpClient();
-
-            Request request = new Request.Builder().url("http://google.com").build();
-
-            Response response = client.newCall(request).execute();
-
-            text += " " + response.body().string();
-        } catch (Exception e) {
-            Log.e("Welcome", "" + e.toString());
-        }
+        //Network call
+        new testHttp().execute();
 
         testView.setText(text);
 
@@ -117,5 +109,25 @@ public class Welcome extends ActionBarActivity {
         else {
             Toast.makeText(this, "Switch activity now", Toast.LENGTH_SHORT).show();
         }
+    }
+
+    class testHttp extends AsyncTask<String,Void, String> {
+        @Override
+        protected String doInBackground(String... params) {
+            try {
+                OkHttpClient client = new OkHttpClient();
+
+                Request request = new Request.Builder().url("http://google.com").build();
+
+                Response response = client.newCall(request).execute();
+
+                String msg = " " + response.body().string();
+
+                return msg;
+            } catch (Exception e) {
+                Log.e("Welcome", "" + e.toString());
+                return null;
+            }
+        };
     }
 }
