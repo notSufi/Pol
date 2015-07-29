@@ -8,6 +8,7 @@ public class Post {
 
     final public int THREAD_PARENT_INDEX = 0;
 
+    private int m_id;
     private int m_parentId;
     private String m_posterId;
     private Date m_timestamp;
@@ -20,6 +21,22 @@ public class Post {
         this.m_timestamp = m_timestamp;
         this.m_up_votes = m_up_votes;
         this.m_flaggedAmount = m_flagged_amount;
+    }
+
+    public int getId() {
+        return m_id;
+    }
+
+    public void setId(int id) {
+        m_id = id;
+    }
+
+    public int getUp_votes() {
+        return m_up_votes;
+    }
+
+    public void setUp_votes(int up_votes) {
+        m_up_votes = up_votes;
     }
 
     public boolean IsThread() {
