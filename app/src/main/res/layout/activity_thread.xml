@@ -5,12 +5,7 @@
     android:background="#cccccc">
 
     <View
-        android:layout_width="fill_parent"
-        android:layout_height="65dp"
-        android:background="#4caf50"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true"
+        style="@style/TitleBar"
 
         android:id="@+id/view" />
 

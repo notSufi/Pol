@@ -3,7 +3,20 @@
     android:layout_height="match_parent"
     tools:context="com.example.sufiy_000.pol.Home">
 
-    <!-- activity_screen_slide.xml -->
+    <View
+        style="@style/TitleBar"
+        android:id="@+id/view" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:layout_marginTop="19dp"
+        android:layout_marginLeft="15dp"
+        android:textColor="#dddddd"
+        android:text="Constituency Name"/>
+
+    <!-- Fragment Slider -->
     <android.support.v4.view.ViewPager
         xmlns:android="http://schemas.android.com/apk/res/android"
         android:id="@+id/pager"
