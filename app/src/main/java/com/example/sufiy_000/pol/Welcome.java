@@ -16,6 +16,7 @@ import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.sufiy_000.pol.classes.AsyncHttpGet;
 import com.example.sufiy_000.pol.classes.User;
 import com.squareup.okhttp.OkHttpClient;
 import com.squareup.okhttp.Request;
@@ -42,6 +43,7 @@ public class Welcome extends ActionBarActivity {
     //private Location m_location = new Location();
 
     User m_user;
+    TextView testView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -50,7 +52,7 @@ public class Welcome extends ActionBarActivity {
 
         // Check if user exists
 
-        TextView testView = (TextView) findViewById(R.id.textView2);
+        testView = (TextView) findViewById(R.id.textView2);
 
        /* Location m_deviceLocation = new Location("");
         double m_lat = m_deviceLocation.getLatitude();
@@ -78,9 +80,9 @@ public class Welcome extends ActionBarActivity {
         }
 
         //Network call
-        new testHttp().execute();
+        new testHttp().execute("http://google.com");
 
-        testView.setText(text);
+       // testView.setText(text);
 
         TelephonyManager tm = (TelephonyManager) getBaseContext().getSystemService(Context.TELEPHONY_SERVICE);
         String android_id = tm.getDeviceId();
@@ -111,23 +113,11 @@ public class Welcome extends ActionBarActivity {
         }
     }
 
-    class testHttp extends AsyncTask<String,Void, String> {
+    class testHttp extends AsyncHttpGet {
         @Override
-        protected String doInBackground(String... params) {
-            try {
-                OkHttpClient client = new OkHttpClient();
-
-                Request request = new Request.Builder().url("http://google.com").build();
-
-                Response response = client.newCall(request).execute();
-
-                String msg = " " + response.body().string();
-
-                return msg;
-            } catch (Exception e) {
-                Log.e("Welcome", "" + e.toString());
-                return null;
-            }
-        };
+        protected void onPostExecute(String s) {
+            super.onPostExecute(s);
+            testView.setText(s);
+        }
     }
 }
