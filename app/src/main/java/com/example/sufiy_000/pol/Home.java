@@ -48,7 +48,16 @@ public class Home extends FragmentActivity {
 
         @Override
         public Fragment getItem(int position) {
-            return new HomePage();
+            switch (position) {
+                case 0:
+                    return new HomePage();
+                case 1:
+                    return new AllPosts();
+                case 2:
+                    return new CandidatesList();
+                default:
+                    return new HomePage();
+            }
         }
 
         @Override
