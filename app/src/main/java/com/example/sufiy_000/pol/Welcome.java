@@ -127,7 +127,7 @@ public class Welcome extends Activity {
             //testView.setText(response.message());
             Intent intent = new Intent(getApplicationContext(), Home.class);
             try {
-                Log.e("Response msg", response);
+                Log.d("Response msg", response);
                 JSONObject userJson = new JSONObject(response);
 
                 String android_id = userJson.getString("android_id");
