@@ -10,11 +10,13 @@ import com.squareup.okhttp.Response;
 /**
  * Created by Thomas on 29/07/2015.
  */
-public class AsyncHttpGet extends AsyncTask<String,String, Response> {
+public class AsyncHttpGet extends AsyncTask<String,String, String> {
     @Override
-    protected Response doInBackground(String... params) {
+    protected String doInBackground(String... params) {
         try {
             String s = params[0];
+
+            Log.d("Http", s);
 
             OkHttpClient client = new OkHttpClient();
 
@@ -22,7 +24,7 @@ public class AsyncHttpGet extends AsyncTask<String,String, Response> {
 
             Response response = client.newCall(request).execute();
 
-            return response;
+            return response.body().string();
         } catch (Exception e) {
             Log.e("Welcome", "" + e.toString());
             return null;
@@ -30,7 +32,7 @@ public class AsyncHttpGet extends AsyncTask<String,String, Response> {
     }
 
     @Override
-    protected void onPostExecute(Response response) {
+    protected void onPostExecute(String response) {
         super.onPostExecute(response);
     }
 }
