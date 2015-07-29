@@ -22,20 +22,33 @@
         android:layout_marginLeft="15dp"
         android:id="@+id/textView3"
         android:textColor="#dddddd"
-        android:text="Thread Title" />
+        android:text="Discussion Title" />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceLarge"
-        android:text="Large Text"
+        android:text="Discussion Body"
         android:layout_marginTop="25dp"
         android:layout_marginLeft="60dp"
+        android:layout_marginRight="25dp"
+        android:textSize="18dp"
         android:textColor="#666666"
         android:id="@+id/textView4"
         android:layout_below="@+id/view"
         android:layout_alignLeft="@+id/view"
         android:layout_alignStart="@+id/view" />
+
+    <Button
+        android:layout_height="wrap_content"
+        android:text="^"
+        android:id="@+id/button"
+        android:layout_marginTop="80dp"
+        android:layout_marginLeft="7dp"
+        android:layout_width="50dp"
+        android:background="#ddddd"
+        style="?android:attr/borderlessButtonStyle"
+        />
 
 
 </RelativeLayout>
