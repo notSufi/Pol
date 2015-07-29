@@ -115,9 +115,9 @@ public class Welcome extends ActionBarActivity {
 
     class testHttp extends AsyncHttpGet {
         @Override
-        protected void onPostExecute(String s) {
-            super.onPostExecute(s);
-            testView.setText(s);
+        protected void onPostExecute(Response response) {
+            super.onPostExecute(response);
+            testView.setText(response.message());
         }
     }
 }
