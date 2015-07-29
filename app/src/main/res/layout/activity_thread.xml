@@ -46,7 +46,7 @@
         android:layout_marginTop="80dp"
         android:layout_marginLeft="7dp"
         android:layout_width="50dp"
-        android:background="#ddddd"
+        android:background="#dddddd"
         style="?android:attr/borderlessButtonStyle"
         />
 
