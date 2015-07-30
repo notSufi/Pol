@@ -17,4 +17,14 @@
         android:layout_marginTop="63dp"
         android:textSize="100dp"
         android:textColor="#ffe3e3e3"/>
+
+    <ProgressBar
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/textView2"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
+        android:layout_margin="100dp"/>
 </RelativeLayout>
