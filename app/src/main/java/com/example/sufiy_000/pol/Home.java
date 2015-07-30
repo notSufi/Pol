@@ -1,5 +1,6 @@
 package com.example.sufiy_000.pol;
 
+import android.content.Context;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 
@@ -9,6 +10,7 @@ import android.support.v4.app.FragmentStatePagerAdapter;
 import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.os.Bundle;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.sufiy_000.pol.classes.User;
@@ -22,10 +24,16 @@ public class Home extends FragmentActivity {
 
     private PagerAdapter m_pagerAdapter;
 
+    private TextView m_titleBar;
+
+    private Context m_context;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
+
+        m_context = getApplicationContext();
 
         //Get User
         Intent i = getIntent();
@@ -36,6 +44,7 @@ public class Home extends FragmentActivity {
         m_Pager = (ViewPager)findViewById(R.id.pager);
         m_pagerAdapter = new ScreenSlidePagerAdapter(getSupportFragmentManager());
         m_Pager.setAdapter(m_pagerAdapter);
+        m_titleBar = (TextView) findViewById(R.id.TitleBar);
     }
 
     private class ScreenSlidePagerAdapter extends FragmentStatePagerAdapter {
@@ -45,6 +54,7 @@ public class Home extends FragmentActivity {
 
         @Override
         public Fragment getItem(int position) {
+            Toast.makeText(m_context, String.valueOf(position), Toast.LENGTH_SHORT) .show();
             switch (position) {
                 case 0:
                     return new HomePage();
