@@ -60,7 +60,6 @@ public class Welcome extends Activity {
 
         // Check if user exists
 
-        testView = (TextView) findViewById(R.id.textView2);
         m_UserLoginProgress = (ProgressBar) findViewById(R.id.UserLoginSpinner);
 
         /*
