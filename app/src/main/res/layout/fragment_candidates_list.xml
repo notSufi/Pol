@@ -5,14 +5,19 @@
              tools:context="com.example.sufiy_000.pol.CandidatesList">
 
     <!-- TODO: Update blank fragment layout -->
+    <View
+        style="@style/TitleBar"
+        android:id="@+id/view" />
 
     <TextView
-        style="?android:textAppearanceMedium"
-        android:padding="16dp"
-        android:lineSpacingMultiplier="1.2"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Candidates List"/>
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:layout_marginTop="19dp"
+        android:layout_marginLeft="15dp"
+        android:textColor="#dddddd"
+        android:text="Candidates"
+        android:id="@+id/TitleBar"/>
 
     <ListView
         android:layout_marginTop="50dp"

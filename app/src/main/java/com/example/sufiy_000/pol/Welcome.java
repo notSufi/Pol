@@ -3,6 +3,8 @@ package com.example.sufiy_000.pol;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Color;
+import android.graphics.PorterDuff;
 import android.location.Location;
 import android.location.LocationListener;
 import android.location.LocationManager;
@@ -27,6 +29,11 @@ import org.json.JSONObject;
 import java.io.Serializable;
 import java.util.Calendar;
 import java.util.Date;
+
+import static android.graphics.Color.WHITE;
+import static android.graphics.PorterDuff.Mode.MULTIPLY;
+import static android.graphics.PorterDuff.Mode.OVERLAY;
+import static android.graphics.PorterDuff.Mode.SCREEN;
 
 //import android.view.Menu;
 //import android.view.MenuItem;
@@ -54,6 +61,13 @@ public class Welcome extends Activity {
         // Check if user exists
 
         testView = (TextView) findViewById(R.id.textView2);
+        m_UserLoginProgress = (ProgressBar) findViewById(R.id.UserLoginSpinner);
+
+        /*
+        if (m_UserLoginProgress != null) {
+            //m_UserLoginProgress.getProgressDrawable().setColorFilter(WHITE, OVERLAY);
+            m_UserLoginProgress.getIndeterminateDrawable().setColorFilter(Color.WHITE, SCREEN);
+        }*/
 
         double aLong;
         double lat;
