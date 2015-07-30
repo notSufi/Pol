@@ -2,6 +2,7 @@ package com.example.sufiy_000.pol;
 
 import android.content.Context;
 import android.graphics.Color;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,6 +13,7 @@ import android.widget.TwoLineListItem;
 import com.example.sufiy_000.pol.classes.Candidate;
 
 import java.util.ArrayList;
+import java.util.Locale;
 
 /**
  * Created by Thomas on 30/07/2015.
@@ -26,6 +28,7 @@ public class CandidateAdapter extends BaseAdapter {
     }
 
     public void Add(String Name, String Party) {
+        Log.d("Candidate Adapter", "Adding Candidate");
         m_candidates.add(new Candidate(Name, Party));
     }
 
