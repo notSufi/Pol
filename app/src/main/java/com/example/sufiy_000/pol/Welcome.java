@@ -35,10 +35,6 @@ public class Welcome extends Activity {
 
     private Handler m_Handler = new Handler();
     private boolean CanSwitch = true;
-
-    //private Location m_location = new Location();
-
-    User m_user;
     TextView testView;
 
     @Override
@@ -49,20 +45,6 @@ public class Welcome extends Activity {
         // Check if user exists
 
         testView = (TextView) findViewById(R.id.textView2);
-
-       /* Location m_deviceLocation = new Location("");
-        double m_lat = m_deviceLocation.getLatitude();
-        double m_long = m_deviceLocation.getLongitude();*/
-
-        //LocationManager lm = (LocationManager)getSystemService(Context.LOCATION_SERVICE);
-        //Location location = lm.getLastKnownLocation(LocationManager.GPS_PROVIDER);
-
-        //LocationManager mLocationManager = (LocationManager) getSystemService(LOCATION_SERVICE);
-
-        //mLocationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, m_locationListener);
-
-       // m_location.setLatitude(51);
-       // m_location.setLongitude(0
 
         double aLong;
         double lat;
@@ -86,21 +68,6 @@ public class Welcome extends Activity {
         //Network call
         new testHttp().execute("http://sufigaffar.com/pol/?query=user&action=new&android_id=" +
                 android_id + "&lat=" + String.valueOf(lat) + "&long=" + String.valueOf(aLong));
-
-       // testView.setText(text);
-
-        //TelephonyManager tm = (TelephonyManager) getBaseContext().getSystemService(Context.TELEPHONY_SERVICE);
-        //String android_id = tm.getDeviceId();
-
-        //testView.setText(android_id);
-
-        //Calendar c = Calendar.getInstance();
-        //int seconds = c.get(Calendar.SECOND);
-
-        //Date d = new Date();
-        //d.setTime(seconds);
-
-        //m_user = new User(android_id,d,0);
 
         m_Handler.postDelayed(new Runnable() {
             @Override
