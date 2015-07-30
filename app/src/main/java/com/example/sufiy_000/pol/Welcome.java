@@ -147,18 +147,5 @@ public class Welcome extends Activity {
             }
             //intent.putExtra("User", response);
         }
-
-        @Override
-        protected void onProgressUpdate(Long... values) {
-            super.onProgressUpdate(values);
-
-            int max = values[1].intValue();
-            int prog = values[0].intValue();
-
-            //if ()
-
-            m_UserLoginProgress.setMax(max);
-            m_UserLoginProgress.setProgress(prog);
-        }
     }
 }

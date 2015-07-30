@@ -27,39 +27,6 @@ public class AsyncHttpGet extends AsyncTask<String,Long, String> {
 
             Response response = client.newCall(request).execute();
 
-            if (response.code() == 200) {
-                InputStream is = null;
-                try {
-                    is = response.body().byteStream();
-                    byte[] buff = new byte[1024 * 4];
-                    long downloaded = 0;
-                    long target = response.body().contentLength();
-
-                    publishProgress(0L, target);
-                    while (true) {
-                        int read = is.read(buff);
-                        if (read == -1) {
-                            break;
-                        }
-
-                        downloaded += read;
-                        publishProgress(downloaded, target);
-                        if (isCancelled()) {
-                            return null;
-                        }
-                    }
-                } catch (IOException ignore) {
-                    return null;
-                } finally {
-                    if (is != null) {
-                        is.close();
-                    }
-                }
-            }
-            else {
-                return null;
-            }
-
             return response.body().string();
         } catch (Exception e) {
             Log.e("Welcome", "" + e.toString());
