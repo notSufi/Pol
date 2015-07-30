@@ -13,7 +13,10 @@ import android.os.Bundle;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.sufiy_000.pol.classes.Candidate;
 import com.example.sufiy_000.pol.classes.User;
+
+import java.util.ArrayList;
 
 
 public class Home extends FragmentActivity {
@@ -31,6 +34,8 @@ public class Home extends FragmentActivity {
     private HomePage m_homePage = new HomePage();
     private AllPosts m_allPosts = new AllPosts();
     private CandidatesList m_candidatesList = new CandidatesList();
+
+    public ArrayList<Candidate> m_candidates = null;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

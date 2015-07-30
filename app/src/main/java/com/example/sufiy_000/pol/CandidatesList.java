@@ -32,6 +32,8 @@ public class CandidatesList extends Fragment {
     private CandidateAdapter m_adapter;
     private ArrayList<Candidate> m_arrayList;
 
+    Home parentActivity;
+
     public User currentUser;
 
     @Override
@@ -45,18 +47,25 @@ public class CandidatesList extends Fragment {
         //m_adapter = new ArrayAdapter<String>(getActivity().getApplicationContext(),
              //   R.layout.candidate_list_view, m_arrayList);
 
+        parentActivity = (Home)getActivity();
+
         m_adapter = new CandidateAdapter(getActivity().getApplicationContext(), m_arrayList);
 
         m_listView.setAdapter(m_adapter);
 
-        String constit = currentUser.getConstituency();
+        //if (parentActivity.m_candidates != null) {
+        // m_arrayList = parentActivity.m_candidates;
+        //   m_adapter.notifyDataSetChanged();
+        //} else {
+            String constit = currentUser.getConstituency();
 
-        if (constit == null) {
-            constit="Birmingham,%20Ladywood";
-            Toast.makeText(getActivity().getApplicationContext(), "Constituency not found", Toast.LENGTH_SHORT).show();
-        }
+            if (constit == null) {
+                constit="Birmingham,%20Ladywood";
+                Toast.makeText(getActivity().getApplicationContext(), "Constituency not found", Toast.LENGTH_SHORT).show();
+            }
 
-        new GetCandidates().execute("http://sufigaffar.com/pol/?query=candidates&constituency=" + constit);
+            new GetCandidates().execute("http://sufigaffar.com/pol/?query=candidates&constituency=" + constit);
+        //}
 
         return rootView;
     }
@@ -80,6 +89,7 @@ public class CandidatesList extends Fragment {
                     Log.d("Candidate Party", party);
                     m_arrayList.add(new Candidate(name, party));
                     m_adapter.notifyDataSetChanged();
+                    parentActivity.m_candidates = m_arrayList;
                     //AddContent(new Candidate(name,party));
                 }
 
