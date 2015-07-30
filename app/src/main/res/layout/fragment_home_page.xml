@@ -7,6 +7,7 @@
     <!-- TODO: Update blank fragment layout -->
     <View
         style="@style/TitleBar"
+        android:background="@color/sub"
         android:id="@+id/view" />
 
     <TextView
@@ -15,7 +16,7 @@
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:layout_marginTop="19dp"
         android:layout_marginLeft="15dp"
-        android:textColor="#dddddd"
+        android:textColor="@color/button_material_dark"
         android:text="Your Posts"
         android:id="@+id/TitleBar"/>
 
