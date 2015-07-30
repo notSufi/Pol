@@ -3,6 +3,9 @@ package com.example.sufiy_000.pol;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
+import android.location.Location;
+import android.location.LocationListener;
+import android.location.LocationManager;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Parcel;
@@ -34,8 +37,10 @@ public class Welcome extends Activity {
     private String text;
 
     private Handler m_Handler = new Handler();
-    private boolean CanSwitch = true;
+    private boolean CanSwitch = false;
     TextView testView;
+
+    Location currentLocation = null;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -62,28 +67,52 @@ public class Welcome extends Activity {
             CanSwitch = true;
         }
 
-        String android_id = Settings.Secure.getString(getApplicationContext().getContentResolver(),
-                Settings.Secure.ANDROID_ID);
+        LocationManager lm = (LocationManager) this.getSystemService(Context.LOCATION_SERVICE);
 
-        //Network call
-        new testHttp().execute("http://sufigaffar.com/pol/?query=user&action=new&android_id=" +
-                android_id + "&lat=" + String.valueOf(lat) + "&long=" + String.valueOf(aLong));
-
-        m_Handler.postDelayed(new Runnable() {
+        LocationListener ll = new LocationListener() {
             @Override
-            public void run() {
-                doStuff();
+            public void onLocationChanged(Location location) {
+                currentLocation = location;
+                if (location != null) {
+                    doStuff();
+                }
             }
-        }, 2000);
+
+            @Override
+            public void onStatusChanged(String provider, int status, Bundle extras) {
+
+            }
+
+            @Override
+            public void onProviderEnabled(String provider) {
+
+            }
+
+            @Override
+            public void onProviderDisabled(String provider) {
+
+            }
+        };
+
+        lm.requestLocationUpdates(LocationManager.NETWORK_PROVIDER, 0, 0, ll);
     }
 
+    boolean once = false;
+
     private void doStuff () {
-        if (CanSwitch) {
-            //-Intent intent = new Intent(this, Home.class);
-            //startActivity(intent);
+        if (!once) {
+            String android_id = Settings.Secure.getString(getApplicationContext().getContentResolver(),
+                    Settings.Secure.ANDROID_ID);
+
+            //Network call
+            new testHttp().execute("http://sufigaffar.com/pol/?query=user&action=new&android_id=" +
+                    android_id + "&lat=" + String.valueOf(currentLocation.getLatitude()) + "&long=" + String.valueOf(currentLocation.getLongitude()));
+
+
+            once = true; //Make sure to stop more requests for location
         }
         else {
-            Toast.makeText(this, "Switch activity now", Toast.LENGTH_SHORT).show();
+            Log.d("Welcome", "User already logged in!");
         }
     }
 
@@ -109,6 +138,7 @@ public class Welcome extends Activity {
                 Log.e("Welcome", e.toString());
                 Toast.makeText(getApplicationContext(), e.getMessage(), Toast.LENGTH_LONG).show();
                 Log.e("Welcome", Boolean.toString(e.getMessage() == null));
+                once = false;
             }
             //intent.putExtra("User", response);
         }
