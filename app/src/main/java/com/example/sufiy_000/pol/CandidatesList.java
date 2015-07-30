@@ -51,7 +51,12 @@ public class CandidatesList extends Fragment {
 
         String constit = currentUser.getConstituency();
 
-        new GetCandidates().execute("http://sufigaffar.com/pol/?query=candidates&constituency=Birmingham,%20Ladywood");
+        if (constit == null) {
+            constit="Birmingham,%20Ladywood";
+            Toast.makeText(getActivity().getApplicationContext(), "Constituency not found", Toast.LENGTH_SHORT).show();
+        }
+
+        new GetCandidates().execute("http://sufigaffar.com/pol/?query=candidates&constituency=" + constit);
 
         return rootView;
     }
