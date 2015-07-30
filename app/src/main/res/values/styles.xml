@@ -14,4 +14,8 @@
         <!--<item name="android:layout_alignParentEnd">true</item>-->
     </style>
 
+    <item name="title" type="color">#4caf50</item>
+    <item name="sub" type="color">#c5dcc6</item>
+    <item name="main" type="color">#d8e8d9</item>
+
 </resources>
