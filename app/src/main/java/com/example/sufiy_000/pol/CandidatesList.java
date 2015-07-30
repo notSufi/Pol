@@ -11,13 +11,15 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
+import com.example.sufiy_000.pol.classes.Candidate;
+
 import java.util.ArrayList;
 
 public class CandidatesList extends Fragment {
 
     private ListView m_listView;
-    private ArrayAdapter<String> m_adapter;
-    private ArrayList<String> m_arrayList;
+    private CandidateAdapter m_adapter;
+    private ArrayList<Candidate> m_arrayList;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -26,14 +28,16 @@ public class CandidatesList extends Fragment {
                 R.layout.fragment_candidates_list, container, false);
 
         m_listView = (ListView) rootView.findViewById(R.id.listView2);
-        m_arrayList = new ArrayList<String>();
-        m_adapter = new ArrayAdapter<String>(getActivity().getApplicationContext(),
-                R.layout.candidate_list_view, m_arrayList);
+        m_arrayList = new ArrayList<Candidate>();
+        //m_adapter = new ArrayAdapter<String>(getActivity().getApplicationContext(),
+             //   R.layout.candidate_list_view, m_arrayList);
+
+        m_adapter = new CandidateAdapter(getActivity().getApplicationContext(), m_arrayList);
 
         m_listView.setAdapter(m_adapter);
 
         for (int i = 1; i < 100; i++) {
-            m_adapter.add("Candidate " + i);
+            m_adapter.Add("Candidate " + i, "Tory");
         }
 
         return rootView;
