@@ -15,6 +15,9 @@ import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.Toast;
 
+import java.io.UnsupportedEncodingException;
+import java.net.URLEncoder;
+
 import com.example.sufiy_000.pol.classes.AsyncHttpGet;
 import com.example.sufiy_000.pol.classes.Candidate;
 import com.example.sufiy_000.pol.classes.User;
@@ -35,6 +38,7 @@ public class CandidatesList extends Fragment {
     Home parentActivity;
 
     public User currentUser;
+    String constitEncoded;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -64,7 +68,13 @@ public class CandidatesList extends Fragment {
                 Toast.makeText(getActivity().getApplicationContext(), "Constituency not found", Toast.LENGTH_SHORT).show();
             }
 
-            new GetCandidates().execute("http://sufigaffar.com/pol/?query=candidates&constituency=" + constit);
+        try {
+            constitEncoded = URLEncoder.encode(constit, "UTF8");
+        } catch (UnsupportedEncodingException e) {
+            e.printStackTrace();
+        }
+
+        new GetCandidates().execute("http://sufigaffar.com/pol/?query=candidates&constituency=" + constitEncoded);
         //}
 
         return rootView;
