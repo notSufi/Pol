@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<TextView xmlns:android="http://schemas.android.com/apk/res/android"
-          android:id="@+id/tv"
-          android:textColor="#333"
-          android:textSize="20dp"
-          android:padding="5sp"
-          android:layout_width="fill_parent"
-          android:singleLine="true"
-          android:layout_height="fill_parent"/>
+    <TextView xmlns:android="http://schemas.android.com/apk/res/android"
+              android:id="@+id/textView"
+              android:textColor="#333"
+              android:textSize="20sp"
+              android:padding="5sp"
+              android:layout_width="fill_parent"
+              android:singleLine="true"
+              android:layout_height="25dp"/>
