@@ -11,13 +11,21 @@ public class User implements Serializable{
     private String m_androidId;
     private Date m_signUpTime;
     private boolean m_admin;
+    private String m_constituency;
 
-    public User(String m_androidId, Date m_signupTime, boolean m_admin){
-
+    public User(String m_androidId, Date m_signupTime, boolean m_admin, String m_constituency){
+        this.m_constituency = m_constituency;
         this.m_androidId = m_androidId;
         this.m_signUpTime = m_signupTime;
         this.m_admin = m_admin;
+    }
 
+    public String getConstituency() {
+        return m_constituency;
+    }
+
+    public void setConstituency(String constituency) {
+        m_constituency = constituency;
     }
 
     public String getAndroidId() {

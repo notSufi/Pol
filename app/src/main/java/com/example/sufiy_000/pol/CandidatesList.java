@@ -32,6 +32,8 @@ public class CandidatesList extends Fragment {
     private CandidateAdapter m_adapter;
     private ArrayList<Candidate> m_arrayList;
 
+    public User currentUser;
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -46,6 +48,8 @@ public class CandidatesList extends Fragment {
         m_adapter = new CandidateAdapter(getActivity().getApplicationContext(), m_arrayList);
 
         m_listView.setAdapter(m_adapter);
+
+        String constit = currentUser.getConstituency();
 
         new GetCandidates().execute("http://sufigaffar.com/pol/?query=candidates&constituency=Birmingham,%20Ladywood");
 

@@ -28,6 +28,10 @@ public class Home extends FragmentActivity {
 
     private Context m_context;
 
+    private HomePage m_homePage = new HomePage();
+    private AllPosts m_allPosts = new AllPosts();
+    private CandidatesList m_candidatesList = new CandidatesList();
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -45,6 +49,8 @@ public class Home extends FragmentActivity {
         m_pagerAdapter = new ScreenSlidePagerAdapter(getSupportFragmentManager());
         m_Pager.setAdapter(m_pagerAdapter);
         m_titleBar = (TextView) findViewById(R.id.TitleBar);
+
+        m_candidatesList.currentUser = user;
     }
 
     private class ScreenSlidePagerAdapter extends FragmentStatePagerAdapter {
@@ -54,16 +60,15 @@ public class Home extends FragmentActivity {
 
         @Override
         public Fragment getItem(int position) {
-            Toast.makeText(m_context, String.valueOf(position), Toast.LENGTH_SHORT) .show();
             switch (position) {
                 case 0:
-                    return new HomePage();
+                    return m_homePage;
                 case 1:
-                    return new AllPosts();
+                    return m_allPosts;
                 case 2:
-                    return new CandidatesList();
+                    return m_candidatesList;
                 default:
-                    return new HomePage();
+                    return m_homePage;
             }
         }
 

@@ -147,7 +147,8 @@ public class Welcome extends Activity {
                 Date date = new Date();
                 date.setTime(userJson.getLong("signup_time"));
                 boolean admin = userJson.getBoolean("admin");
-                User currentUser = new User(android_id, date, admin);
+                String constituency = userJson.getString("constituency");
+                User currentUser = new User(android_id, date, admin, constituency);
 
                 intent.putExtra("User", currentUser);
                 lm.removeUpdates(ll);
