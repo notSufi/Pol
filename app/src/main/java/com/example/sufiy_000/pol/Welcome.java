@@ -14,6 +14,7 @@ import android.provider.Settings;
 import android.support.v7.app.ActionBarActivity;
 import android.telephony.TelephonyManager;
 import android.util.Log;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -39,8 +40,11 @@ public class Welcome extends Activity {
     private Handler m_Handler = new Handler();
     private boolean CanSwitch = false;
     TextView testView;
+    ProgressBar m_UserLoginProgress;
 
     Location currentLocation = null;
+    LocationManager lm = null;
+    LocationListener ll = null;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -67,9 +71,9 @@ public class Welcome extends Activity {
             CanSwitch = true;
         }
 
-        LocationManager lm = (LocationManager) this.getSystemService(Context.LOCATION_SERVICE);
+        lm = (LocationManager) this.getSystemService(Context.LOCATION_SERVICE);
 
-        LocationListener ll = new LocationListener() {
+        ll = new LocationListener() {
             @Override
             public void onLocationChanged(Location location) {
                 currentLocation = location;
@@ -133,6 +137,7 @@ public class Welcome extends Activity {
                 User currentUser = new User(android_id, date, admin);
 
                 intent.putExtra("User", currentUser);
+                lm.removeUpdates(ll);
                 startActivity(intent);
             } catch (Exception e) {
                 Log.e("Welcome", e.toString());
@@ -141,6 +146,19 @@ public class Welcome extends Activity {
                 once = false;
             }
             //intent.putExtra("User", response);
+        }
+
+        @Override
+        protected void onProgressUpdate(Long... values) {
+            super.onProgressUpdate(values);
+
+            int max = values[1].intValue();
+            int prog = values[0].intValue();
+
+            //if ()
+
+            m_UserLoginProgress.setMax(max);
+            m_UserLoginProgress.setProgress(prog);
         }
     }
 }
