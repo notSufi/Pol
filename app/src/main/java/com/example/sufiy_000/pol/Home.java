@@ -1,5 +1,6 @@
 package com.example.sufiy_000.pol;
 
+import android.annotation.TargetApi;
 import android.content.Context;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
@@ -10,6 +11,8 @@ import android.support.v4.app.FragmentStatePagerAdapter;
 import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.os.Bundle;
+import android.util.Log;
+import android.view.WindowManager;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -43,6 +46,15 @@ public class Home extends FragmentActivity {
         setContentView(R.layout.activity_home);
 
         m_context = getApplicationContext();
+        /*
+        android.view.Window window = getWindow();
+        window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
+        window.addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
+        try {
+            window.setStatusBarColor(getResources().getColor(R.color.statusColor));
+        } catch (Exception e) {
+            Log.e("Status bar", "failed");
+        }*/
 
         //Get User
         Intent i = getIntent();

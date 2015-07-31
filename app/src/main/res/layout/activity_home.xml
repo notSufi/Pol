@@ -17,12 +17,20 @@
         android:text="Constituency Name"
         android:id="@+id/TitleBar"/>
 
+    <Button
+        android:layout_below="@+id/view"
+        android:id="@+id/new_post"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Create new post"
+        android:layout_margin="0dp"/>
+
     <!-- Fragment Slider -->
     <android.support.v4.view.ViewPager
         xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_below="@+id/new_post"
         android:id="@+id/pager"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_marginTop="65dp"/>
+        android:layout_height="match_parent"/>
 
 </RelativeLayout>

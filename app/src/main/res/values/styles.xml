@@ -26,4 +26,6 @@
     <item name="SNP" type="color">#fffde7</item>
     <item name="Other" type="color">#fafafa</item>
 
+    <item name="statusColor" type="color">#388e3c</item>
+
 </resources>
