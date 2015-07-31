@@ -3,18 +3,12 @@ package com.example.sufiy_000.pol;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
-import android.graphics.Color;
-import android.graphics.PorterDuff;
 import android.location.Location;
 import android.location.LocationListener;
 import android.location.LocationManager;
 import android.os.Bundle;
 import android.os.Handler;
-import android.os.Parcel;
-import android.os.Parcelable;
 import android.provider.Settings;
-import android.support.v7.app.ActionBarActivity;
-import android.telephony.TelephonyManager;
 import android.util.Log;
 import android.widget.ProgressBar;
 import android.widget.TextView;
@@ -22,18 +16,10 @@ import android.widget.Toast;
 
 import com.example.sufiy_000.pol.classes.AsyncHttpGet;
 import com.example.sufiy_000.pol.classes.User;
-import com.squareup.okhttp.Response;
 
 import org.json.JSONObject;
 
-import java.io.Serializable;
-import java.util.Calendar;
 import java.util.Date;
-
-import static android.graphics.Color.WHITE;
-import static android.graphics.PorterDuff.Mode.MULTIPLY;
-import static android.graphics.PorterDuff.Mode.OVERLAY;
-import static android.graphics.PorterDuff.Mode.SCREEN;
 
 //import android.view.Menu;
 //import android.view.MenuItem;
@@ -57,8 +43,6 @@ public class Welcome extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_welcome);
-
-        // Check if user exists
 
         m_UserLoginProgress = (ProgressBar) findViewById(R.id.UserLoginSpinner);
 
