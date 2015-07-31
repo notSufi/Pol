@@ -8,7 +8,7 @@
     <style name="TitleBar">
         <item name="android:layout_width">fill_parent</item>
         <item name="android:layout_height">65dp</item>
-        <item name="android:background">#4caf50</item>
+        <item name="android:background">@color/title</item>
         <item name="android:layout_alignParentTop">true</item>
         <item name="android:layout_alignParentRight">true</item>
         <!--<item name="android:layout_alignParentEnd">true</item>-->
@@ -18,12 +18,12 @@
     <item name="sub" type="color">#c5dcc6</item>
     <item name="main" type="color">#d8e8d9</item>
 
-    <item name="Labour" type="color">#ffcdd2</item>
-    <item name="Tory" type="color">#bbdefb</item>
-    <item name="LibDem" type="color">#ffe0b2</item>
-    <item name="GreenParty" type="color">#c8e6c9</item>
-    <item name="UKIP" type="color">#d1c4e9</item>
-    <item name="SNP" type="color">#fff9c4</item>
-    <item name="Other" type="color">#f5f5f5</item>
+    <item name="Labour" type="color">#ffebee</item>
+    <item name="Tory" type="color">#e3f2fd</item>
+    <item name="LibDem" type="color">#fff3e0</item>
+    <item name="GreenParty" type="color">#e8f5e9</item>
+    <item name="UKIP" type="color">#f3e5f5</item>
+    <item name="SNP" type="color">#fffde7</item>
+    <item name="Other" type="color">#fafafa</item>
 
 </resources>

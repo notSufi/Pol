@@ -2,7 +2,7 @@
     xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="com.example.sufiy_000.pol.Thread"
-    android:background="#c5dcc6">
+    android:background="@color/sub">
 
     <View
         style="@style/TitleBar"
@@ -54,5 +54,5 @@
         android:paddingLeft="10dp"
         android:paddingRight="10px"
         android:paddingTop="10dp"
-        android:background="#D8E8D9" />
+        android:background="@color/main" />
 </RelativeLayout>
