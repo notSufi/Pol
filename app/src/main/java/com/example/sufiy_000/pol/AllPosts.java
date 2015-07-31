@@ -15,6 +15,9 @@ import com.example.sufiy_000.pol.classes.AsyncHttpGet;
 import com.example.sufiy_000.pol.classes.Candidate;
 import com.example.sufiy_000.pol.classes.User;
 
+import org.json.JSONArray;
+import org.json.JSONObject;
+
 import java.util.ArrayList;
 
 public class AllPosts extends android.support.v4.app.Fragment {
@@ -41,10 +44,6 @@ public class AllPosts extends android.support.v4.app.Fragment {
 
         m_listView.setAdapter(m_adapter);
 
-        m_arrayList.add("UKIP Policies");
-        m_arrayList.add("Tory Policies");
-        m_adapter.notifyDataSetChanged();
-
         GetThreads test = new GetThreads();
         test.execute("http://sufigaffar.com/pol/?query=post&action=return&limit=10&order=timestamp&parent=0&constituency=wealden");
 
@@ -56,6 +55,18 @@ public class AllPosts extends android.support.v4.app.Fragment {
         protected void onPostExecute(String response) {
             super.onPostExecute(response);
             Log.d("Threads Response", response);
+            try {
+                JSONArray threads = new JSONArray(response);
+                for (int i = 0; i < threads.length(); i++){
+                    JSONObject thread = threads.getJSONObject(i);
+                    String Title = thread.getString("title");
+                    m_arrayList.add(Title);
+                    m_adapter.notifyDataSetChanged();
+                }
+            } catch (Exception e) {
+                Log.e("Get Threads Error", e.toString());
+                e.printStackTrace();
+            }
         }
     }
 }
