@@ -1,38 +1,26 @@
 package com.example.sufiy_000.pol;
 
-import android.support.v7.app.ActionBarActivity;
+import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
-import android.view.Menu;
-import android.view.MenuItem;
+import android.widget.TextView;
 
+import com.example.sufiy_000.pol.classes.Post;
 
-public class Thread extends ActionBarActivity {
+public class Thread extends Activity {
+
+    Post m_thread;
+
+    TextView m_threadContent;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_thread);
-    }
+        Intent i = getIntent();
+        m_thread = (Post) i.getSerializableExtra("Thread");
 
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_thread, menu);
-        return true;
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
-        int id = item.getItemId();
-
-        //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
-            return true;
-        }
-
-        return super.onOptionsItemSelected(item);
+        m_threadContent = (TextView) findViewById(R.id.threadContent);
+        m_threadContent.setText(m_thread.getContent());
     }
 }

@@ -1,6 +1,7 @@
 package com.example.sufiy_000.pol;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -54,6 +55,9 @@ public class HomePage extends Fragment {
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 Post post = m_posts.get(position);
                 Toast.makeText(parentActivity.getApplicationContext(), post.getTitle(), Toast.LENGTH_SHORT).show();
+                Intent viewThread = new Intent(parentActivity.getApplicationContext(), Thread.class);
+                viewThread.putExtra("Thread", post);
+                startActivity(viewThread);
             }
         });
 
@@ -86,6 +90,7 @@ public class HomePage extends Fragment {
         protected void onPostExecute(String response) {
             super.onPostExecute(response);
             m_arrayList.clear();
+            m_posts.clear();
             Log.d("Threads Response", response);
             try {
                 JSONArray threads = new JSONArray(response);
@@ -100,7 +105,8 @@ public class HomePage extends Fragment {
                     int id = thread.getInt("id");
                     String up_votes = thread.getString("upvotes");
                     String creator = thread.getString("creator");
-                    post = new Post(parentId, creator, up_votes, Title);
+                    String content = thread.getString("content");
+                    post = new Post(parentId, creator, up_votes, Title, content);
                     m_posts.add(post);
                     m_arrayList.add(Title);
                     m_adapter.notifyDataSetChanged();

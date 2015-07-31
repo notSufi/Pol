@@ -1,14 +1,17 @@
 package com.example.sufiy_000.pol.classes;
+import java.io.Serializable;
 import java.util.Date;
 
 /**
  * Created by Thomas on 27/07/2015.
  */
-public class Post {
+public class Post implements Serializable{
 
     final public int THREAD_PARENT_INDEX = 0;
 
     private String m_title;
+
+    private String m_content;
     private int m_id;
     private int m_parentId;
     private String m_posterId;
@@ -16,13 +19,23 @@ public class Post {
     private String m_up_votes;
     //private int m_flaggedAmount;
 
-    public Post(int m_parentId, String m_posterId/*, Date m_timestamp*/, String m_up_votes, /*int m_flagged_amount,*/ String m_title) {
+    public Post(int m_parentId, String m_posterId/*, Date m_timestamp*/,
+                String m_up_votes, /*int m_flagged_amount,*/ String m_title, String m_content) {
         this.m_title = m_title;
+        this.m_content = m_content;
         this.m_parentId = m_parentId;
         this.m_posterId = m_posterId;
         //this.m_timestamp = m_timestamp;
         this.m_up_votes = m_up_votes;
         //this.m_flaggedAmount = m_flagged_amount;
+    }
+
+    public String getContent() {
+        return m_content;
+    }
+
+    public void setContent(String content) {
+        m_content = content;
     }
 
     public String getTitle() {

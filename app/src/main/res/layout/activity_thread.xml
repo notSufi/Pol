@@ -28,7 +28,7 @@
         android:layout_marginRight="32dp"
         android:textSize="12dp"
         android:textColor="#666666"
-        android:id="@+id/textView4"
+        android:id="@+id/threadContent"
         android:layout_below="@+id/view"
         android:layout_alignLeft="@+id/view"
         android:layout_alignStart="@+id/view" />
@@ -47,7 +47,7 @@
     <ListView
         android:layout_width="wrap_content"
         android:layout_height="375dp"
-        android:id="@+id/listView"
+        android:id="@+id/CommentList"
         android:layout_alignParentRight="true"
         android:layout_alignParentEnd="true"
         android:layout_alignParentBottom="true"
