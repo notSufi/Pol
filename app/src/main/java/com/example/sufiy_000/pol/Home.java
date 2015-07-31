@@ -57,6 +57,8 @@ public class Home extends FragmentActivity {
 
         m_candidatesList.currentUser = user;
         m_allPosts.currentUser = user;
+        m_homePage.currentUser = user;
+
         m_titleBar.setText(user.getConstituency());
     }
 

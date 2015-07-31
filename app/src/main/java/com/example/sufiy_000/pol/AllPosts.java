@@ -19,6 +19,8 @@ import com.example.sufiy_000.pol.classes.User;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
+import java.io.UnsupportedEncodingException;
+import java.net.URLEncoder;
 import java.util.ArrayList;
 
 public class AllPosts extends android.support.v4.app.Fragment {
@@ -47,11 +49,17 @@ public class AllPosts extends android.support.v4.app.Fragment {
 
         String constit = "wealdon";
 
-        if (currentUser == null) {
+        if (currentUser != null) {
             constit = currentUser.getConstituency();
         }
         else {
-            Toast.makeText(parentActivity.getApplicationContext(), "Can't find current constituency", Toast.LENGTH_SHORT);
+            Toast.makeText(parentActivity.getApplicationContext(), "Can't find current constituency", Toast.LENGTH_SHORT).show();
+        }
+
+        try {
+            constit = URLEncoder.encode(constit, "UTF8");
+        } catch (UnsupportedEncodingException e) {
+            e.printStackTrace();
         }
 
         GetThreads test = new GetThreads();
@@ -63,6 +71,7 @@ public class AllPosts extends android.support.v4.app.Fragment {
     class GetThreads extends AsyncHttpGet {
         @Override
         protected void onPostExecute(String response) {
+            m_arrayList.clear();
             super.onPostExecute(response);
             Log.d("Threads Response", response);
             try {

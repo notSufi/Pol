@@ -5,25 +5,29 @@
              tools:context="com.example.sufiy_000.pol.HomePage">
 
     <!-- TODO: Update blank fragment layout -->
-    <View
-        style="@style/TitleBar"
-        android:background="@color/sub"
-        android:id="@+id/view" />
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <View
+            style="@style/TitleBar"
+            android:background="@color/sub"
+            android:id="@+id/view" />
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceLarge"
-        android:layout_marginTop="19dp"
-        android:layout_marginLeft="15dp"
-        android:textColor="@color/button_material_dark"
-        android:text="Your Posts"
-        android:id="@+id/TitleBar"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:layout_marginTop="19dp"
+            android:layout_marginLeft="15dp"
+            android:textColor="@color/button_material_dark"
+            android:text="Your Posts"
+            android:id="@+id/TitleBar"/>
 
-    <ListView
-        android:layout_width="wrap_content"
-        android:layout_height="482dp"
-        android:id="@+id/listView"
-        android:layout_gravity="center" />
+        <ListView
+            android:layout_below="@+id/view"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/ThreadsList" />
+    </RelativeLayout>
 
 </FrameLayout>

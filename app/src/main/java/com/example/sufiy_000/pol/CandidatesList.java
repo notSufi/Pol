@@ -85,7 +85,7 @@ public class CandidatesList extends Fragment {
         protected void onPostExecute(String response) {
             super.onPostExecute(response);
             //testView.setText(response.message());
-            Intent intent = new Intent(getActivity().getApplicationContext(), Home.class);
+            Intent intent = new Intent(parentActivity.getApplicationContext(), Home.class);
             try {
                 Log.d("Response msg", response);
                 JSONArray candidateJson = new JSONArray(response);
