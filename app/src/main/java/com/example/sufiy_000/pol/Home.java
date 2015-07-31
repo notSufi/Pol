@@ -56,6 +56,7 @@ public class Home extends FragmentActivity {
         m_titleBar = (TextView) findViewById(R.id.TitleBar);
 
         m_candidatesList.currentUser = user;
+        m_allPosts.currentUser = user;
         m_titleBar.setText(user.getConstituency());
     }
 
