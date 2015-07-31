@@ -29,11 +29,11 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginLeft="10dp"
-        android:id="@+id/editText"
+        android:id="@+id/title_input"
         android:layout_below="@+id/view"
         android:layout_marginTop="15dp"
         android:width="200dp"
-        android:text="@string/editText"
+        android:hint="@string/editText"
         android:inputType="text" />
 
     <EditText
@@ -41,12 +41,12 @@
         android:layout_height="wrap_content"
         android:inputType="textMultiLine"
         android:ems="10"
-        android:id="@+id/editText2"
-        android:layout_below="@+id/editText"
+        android:id="@+id/content_input"
+        android:layout_below="@+id/title_input"
         android:layout_marginTop="15dp"
         android:layout_marginLeft="10dp"
         android:width="350dp"
-        android:text="@string/editText2" />
+        android:hint="@string/editText2" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -76,7 +76,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/button2"
-        android:id="@+id/button2"
+        android:id="@+id/subbmit_btn"
         android:layout_marginBottom="60dp"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"/>
