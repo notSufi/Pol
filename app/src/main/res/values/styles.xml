@@ -18,4 +18,12 @@
     <item name="sub" type="color">#c5dcc6</item>
     <item name="main" type="color">#d8e8d9</item>
 
+    <item name="Labour" type="color">#ffcdd2</item>
+    <item name="Tory" type="color">#bbdefb</item>
+    <item name="LibDem" type="color">#ffe0b2</item>
+    <item name="GreenParty" type="color">#c8e6c9</item>
+    <item name="UKIP" type="color">#d1c4e9</item>
+    <item name="SNP" type="color">#fff9c4</item>
+    <item name="Other" type="color">#f5f5f5</item>
+
 </resources>

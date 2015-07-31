@@ -67,7 +67,35 @@ public class CandidateAdapter extends BaseAdapter {
         text1.setTextColor(Color.DKGRAY);
         text2.setTextColor(Color.DKGRAY);
 
-        //twoLineListItem.setBackgroundColor();
+        String party = m_candidates.get(position).getParty();
+
+        int color = Color.RED;
+
+        Log.d("Party", party);
+
+        switch (party) {
+            case "Liberal Democrats":
+                color = context.getResources().getColor(R.color.LibDem);
+                break;
+            case "Conservative Party":
+                color = context.getResources().getColor(R.color.Tory);
+                break;
+            case "Green Party":
+                color = context.getResources().getColor(R.color.GreenParty);
+                break;
+            case "UK Independence Party (UKIP)":
+                color = context.getResources().getColor(R.color.UKIP);
+                break;
+            case "Labour Party":
+                color = context.getResources().getColor(R.color.Labour);
+                break;
+            default:
+                color = context.getResources().getColor(R.color.Other);
+                Log.d("Color being set", "Other");
+                break;
+        }
+
+        twoLineListItem.setBackgroundColor(color);
 
         text1.setText(m_candidates.get(position).getName());
         text2.setText("" + m_candidates.get(position).getParty());
