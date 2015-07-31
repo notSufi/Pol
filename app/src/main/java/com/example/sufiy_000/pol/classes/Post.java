@@ -8,19 +8,29 @@ public class Post {
 
     final public int THREAD_PARENT_INDEX = 0;
 
+    private String m_title;
     private int m_id;
     private int m_parentId;
     private String m_posterId;
-    private Date m_timestamp;
-    private int m_up_votes;
-    private int m_flaggedAmount;
+    //private Date m_timestamp;
+    private String m_up_votes;
+    //private int m_flaggedAmount;
 
-    public Post(int m_parentId, String m_posterId, Date m_timestamp, int m_up_votes, int m_flagged_amount) {
+    public Post(int m_parentId, String m_posterId/*, Date m_timestamp*/, String m_up_votes, /*int m_flagged_amount,*/ String m_title) {
+        this.m_title = m_title;
         this.m_parentId = m_parentId;
         this.m_posterId = m_posterId;
-        this.m_timestamp = m_timestamp;
+        //this.m_timestamp = m_timestamp;
         this.m_up_votes = m_up_votes;
-        this.m_flaggedAmount = m_flagged_amount;
+        //this.m_flaggedAmount = m_flagged_amount;
+    }
+
+    public String getTitle() {
+        return m_title;
+    }
+
+    public void setTitle(String title) {
+        m_title = title;
     }
 
     public int getId() {
@@ -31,11 +41,11 @@ public class Post {
         m_id = id;
     }
 
-    public int getUp_votes() {
+    public String getUp_votes() {
         return m_up_votes;
     }
 
-    public void setUp_votes(int up_votes) {
+    public void setUp_votes(String up_votes) {
         m_up_votes = up_votes;
     }
 
@@ -58,29 +68,29 @@ public class Post {
     public void setPosterId(String m_posterId) {
         this.m_posterId = m_posterId;
     }
-
+/*
     public Date getTimestamp() {
         return m_timestamp;
     }
 
     public void setTimestamp(Date m_timestamp) {
         this.m_timestamp = m_timestamp;
-    }
+    }*/
 
-    public int getUpVotes() {
+    public String getUpVotes() {
         return m_up_votes;
     }
 
-    public void setUpVotes(int m_up_votes) {
+    public void setUpVotes(String m_up_votes) {
         this.m_up_votes = m_up_votes;
     }
-
+/*
     public int getFlaggedAmount() {
         return m_flaggedAmount;
     }
 
     public void setFlaggedAmount(int m_flaggedAmount) {
         this.m_flaggedAmount = m_flaggedAmount;
-    }
+    }*/
 }
 

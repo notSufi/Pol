@@ -137,6 +137,7 @@ public class Welcome extends Activity {
                 intent.putExtra("User", currentUser);
                 lm.removeUpdates(ll);
                 startActivity(intent);
+                finish();
             } catch (Exception e) {
                 Log.e("Welcome", e.toString());
                 Toast.makeText(getApplicationContext(), e.getMessage(), Toast.LENGTH_LONG).show();

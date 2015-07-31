@@ -8,11 +8,13 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.Toast;
 
 import com.example.sufiy_000.pol.classes.AsyncHttpGet;
+import com.example.sufiy_000.pol.classes.Post;
 import com.example.sufiy_000.pol.classes.User;
 
 import org.json.JSONArray;
@@ -27,6 +29,7 @@ public class HomePage extends Fragment {
     ListView m_listView;
     private ArrayAdapter<String> m_adapter;
     private ArrayList<String> m_arrayList = new ArrayList<String>();
+    private ArrayList<Post> m_posts = new ArrayList<Post>();
 
     Home parentActivity;
 
@@ -45,6 +48,14 @@ public class HomePage extends Fragment {
                 R.layout.thread_list_item, m_arrayList);
 
         m_listView.setAdapter(m_adapter);
+
+        m_listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Post post = m_posts.get(position);
+                Toast.makeText(parentActivity.getApplicationContext(), post.getTitle(), Toast.LENGTH_SHORT).show();
+            }
+        });
 
         String constit = "wealdon";
         String android_id = "test";
@@ -79,8 +90,18 @@ public class HomePage extends Fragment {
             try {
                 JSONArray threads = new JSONArray(response);
                 for (int i = 0; i < threads.length(); i++){
+                    Post post;
                     JSONObject thread = threads.getJSONObject(i);
                     String Title = thread.getString("title");
+                    int parentId = thread.getInt("parent");
+                    if (parentId > 0) {
+                        Title = "Re: " + Title;
+                    }
+                    int id = thread.getInt("id");
+                    String up_votes = thread.getString("upvotes");
+                    String creator = thread.getString("creator");
+                    post = new Post(parentId, creator, up_votes, Title);
+                    m_posts.add(post);
                     m_arrayList.add(Title);
                     m_adapter.notifyDataSetChanged();
                 }
