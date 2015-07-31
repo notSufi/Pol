@@ -65,11 +65,11 @@ public class CandidateAdapter extends BaseAdapter {
         TextView text2 = twoLineListItem.getText2();
 
         text1.setTextColor(Color.DKGRAY);
-        text2.setTextColor(Color.DKGRAY);
+        text2.setTextColor(Color.GRAY);
 
         String party = m_candidates.get(position).getParty();
 
-        int color = Color.RED;
+        int color = context.getResources().getColor(R.color.Other);
 
         Log.d("Party", party);
 
@@ -90,8 +90,8 @@ public class CandidateAdapter extends BaseAdapter {
                 color = context.getResources().getColor(R.color.Labour);
                 break;
             default:
-                color = context.getResources().getColor(R.color.Other);
-                Log.d("Color being set", "Other");
+                //color = context.getResources().getColor(R.color.Other);
+                //Log.d("Color being set", "Other");
                 break;
         }
 
