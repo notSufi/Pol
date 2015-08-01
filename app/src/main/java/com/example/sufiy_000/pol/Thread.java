@@ -37,7 +37,7 @@ public class Thread extends Activity {
 
         m_listView = (ListView) findViewById(R.id.CommentList);
         m_adapter = new ArrayAdapter<String>(getApplicationContext(),
-                R.layout.thread_list_item, m_comments);
+                R.layout.comment, m_comments);
 
         m_listView.setAdapter(m_adapter);
 
