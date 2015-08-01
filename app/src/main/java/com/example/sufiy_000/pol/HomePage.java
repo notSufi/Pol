@@ -107,6 +107,7 @@ public class HomePage extends Fragment {
                     String creator = thread.getString("creator");
                     String content = thread.getString("content");
                     post = new Post(parentId, creator, up_votes, Title, content);
+                    post.setId(id);
                     m_posts.add(post);
                     m_arrayList.add(Title);
                     m_adapter.notifyDataSetChanged();

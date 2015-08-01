@@ -24,8 +24,8 @@
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:text="Discussion Body"
         android:layout_marginTop="25dp"
-        android:layout_marginLeft="60dp"
-        android:layout_marginRight="32dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
         android:textSize="18dp"
         android:textColor="#666666"
         android:id="@+id/threadContent"
@@ -33,7 +33,7 @@
         android:layout_alignLeft="@+id/view"
         android:layout_alignStart="@+id/view" />
 
-    <Button
+    <!--<Button
         android:text="^"
         android:id="@+id/button"
         android:layout_marginTop="80dp"
@@ -42,7 +42,7 @@
         android:layout_height="45dp"
         android:textColor="#444"
         style="?android:attr/borderlessButtonStyle"
-        />
+        />-->
 
     <ListView
         android:layout_width="wrap_content"

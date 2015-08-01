@@ -41,8 +41,9 @@ public class Thread extends Activity {
 
         m_listView.setAdapter(m_adapter);
 
-        new GetComments().execute("http://sufigaffar.com/pol/?query=post&action=return&limit=10&order=timestamp&parent="
-                + m_thread.getParentId());
+        GetComments getComments = new GetComments();
+        getComments.execute("http://sufigaffar.com/pol/?query=post&action=return&limit=10&order=timestamp&parent="
+                + m_thread.getId());
 
         m_title_display = (TextView) findViewById(R.id.TitleDisplay);
         m_title_display.setText(m_thread.getTitle());
