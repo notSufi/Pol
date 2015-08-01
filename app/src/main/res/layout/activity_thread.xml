@@ -14,7 +14,7 @@
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:layout_marginTop="19dp"
         android:layout_marginLeft="15dp"
-        android:id="@+id/textView3"
+        android:id="@+id/TitleDisplay"
         android:textColor="#dddddd"
         android:text="Discussion Title" />
 

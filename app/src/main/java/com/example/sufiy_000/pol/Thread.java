@@ -11,6 +11,7 @@ public class Thread extends Activity {
 
     Post m_thread;
 
+    TextView m_title_display;
     TextView m_threadContent;
 
     @Override
@@ -20,6 +21,8 @@ public class Thread extends Activity {
         Intent i = getIntent();
         m_thread = (Post) i.getSerializableExtra("Thread");
 
+        m_title_display = (TextView) findViewById(R.id.TitleDisplay);
+        m_title_display.setText(m_thread.getTitle());
         m_threadContent = (TextView) findViewById(R.id.threadContent);
         m_threadContent.setText(m_thread.getContent());
     }
