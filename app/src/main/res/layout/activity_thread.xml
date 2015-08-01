@@ -24,6 +24,7 @@
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:text="Discussion Body"
         android:layout_marginTop="25dp"
+        android:layout_marginBottom="25dp"
         android:layout_marginLeft="20dp"
         android:layout_marginRight="20dp"
         android:textSize="18dp"
@@ -44,15 +45,23 @@
         style="?android:attr/borderlessButtonStyle"
         />-->
 
+    <Button
+        android:layout_below="@id/threadContent"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/submit_btn"
+        android:text="Submit Contribution"/>
+
     <ListView
         android:layout_width="wrap_content"
-        android:layout_height="375dp"
+        android:layout_height="wrap_content"
         android:id="@+id/CommentList"
+        android:layout_below="@+id/submit_btn"
         android:layout_alignParentRight="true"
         android:layout_alignParentEnd="true"
         android:layout_alignParentBottom="true"
+        android:paddingTop="10dp"
         android:paddingLeft="10dp"
         android:paddingRight="10px"
-        android:paddingTop="10dp"
         android:background="@color/main" />
 </RelativeLayout>

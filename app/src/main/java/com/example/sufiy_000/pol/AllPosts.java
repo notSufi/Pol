@@ -1,6 +1,7 @@
 package com.example.sufiy_000.pol;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.app.Fragment;
@@ -8,12 +9,14 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.Toast;
 
 import com.example.sufiy_000.pol.classes.AsyncHttpGet;
 import com.example.sufiy_000.pol.classes.Candidate;
+import com.example.sufiy_000.pol.classes.Post;
 import com.example.sufiy_000.pol.classes.User;
 
 import org.json.JSONArray;
@@ -28,6 +31,7 @@ public class AllPosts extends android.support.v4.app.Fragment {
     ListView m_listView;
     private ArrayAdapter<String> m_adapter;
     private ArrayList<String> m_arrayList = new ArrayList<String>();
+    private ArrayList<Post> m_posts = new ArrayList<Post>();
 
     Home parentActivity;
 
@@ -46,6 +50,17 @@ public class AllPosts extends android.support.v4.app.Fragment {
                 R.layout.thread_list_item, m_arrayList);
 
         m_listView.setAdapter(m_adapter);
+
+        m_listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Post post = m_posts.get(position);
+                Toast.makeText(parentActivity.getApplicationContext(), post.getTitle(), Toast.LENGTH_SHORT).show();
+                Intent viewThread = new Intent(parentActivity.getApplicationContext(), Thread.class);
+                viewThread.putExtra("Thread", post);
+                startActivity(viewThread);
+            }
+        });
 
         String constit = "wealdon";
 
@@ -72,13 +87,26 @@ public class AllPosts extends android.support.v4.app.Fragment {
         @Override
         protected void onPostExecute(String response) {
             m_arrayList.clear();
+            m_posts.clear();
             super.onPostExecute(response);
             Log.d("Threads Response", response);
             try {
                 JSONArray threads = new JSONArray(response);
                 for (int i = 0; i < threads.length(); i++){
+                    Post post;
                     JSONObject thread = threads.getJSONObject(i);
                     String Title = thread.getString("title");
+                    int parentId = thread.getInt("parent");
+                    if (parentId > 0) {
+                        Title = "Re: " + Title;
+                    }
+                    int id = thread.getInt("id");
+                    String up_votes = thread.getString("upvotes");
+                    String creator = thread.getString("creator");
+                    String content = thread.getString("content");
+                    post = new Post(parentId, creator, up_votes, Title, content);
+                    post.setId(id);
+                    m_posts.add(post);
                     m_arrayList.add(Title);
                     m_adapter.notifyDataSetChanged();
                 }
