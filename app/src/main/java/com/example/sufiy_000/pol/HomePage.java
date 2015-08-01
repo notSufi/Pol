@@ -57,6 +57,7 @@ public class HomePage extends Fragment {
                 Toast.makeText(parentActivity.getApplicationContext(), post.getTitle(), Toast.LENGTH_SHORT).show();
                 Intent viewThread = new Intent(parentActivity.getApplicationContext(), Thread.class);
                 viewThread.putExtra("Thread", post);
+                viewThread.putExtra("User", currentUser);
                 startActivity(viewThread);
             }
         });
